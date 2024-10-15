@@ -17,13 +17,16 @@ import express from "express";
 import productosRouter from "./routes/productos.router.js";
 const app = express();
 const PUERTO = 8080;
-import "./database.js";
+// import "./database.js";
+
+//Singleton
+import BaseDeDatos from "./database.js";
+const instanciaDB = BaseDeDatos.getInstancia();
 
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("./src/public"));
-
 
 
 //Rutas
